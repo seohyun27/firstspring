@@ -1,12 +1,14 @@
 package hello.hello_spring.repository;
 
 import hello.hello_spring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
 //MemberRepository의 구현
 //가장 간단한 형태
 
+@Repository
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
@@ -36,4 +38,9 @@ public class MemoryMemberRepository implements MemberRepository {
         return new ArrayList<>(store.values());
         //value가 멤버임으로 멤버들을 반환하게 됨
     }
+
+    public void clearStore(){
+        store.clear();
+    }
+
 }
