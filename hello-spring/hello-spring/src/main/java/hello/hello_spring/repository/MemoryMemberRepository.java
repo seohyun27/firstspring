@@ -7,13 +7,14 @@ import java.util.*;
 
 //MemberRepository의 구현
 //가장 간단한 형태
+//DB 대신 메모리에 저장 -> 자바를 내렸다가 다시 올리면 모든 데이터가 사라짐
 
-@Repository
+// @Repository
 public class MemoryMemberRepository implements MemberRepository {
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
-    @Override
+    // @Override
     public Member save(Member member) {
         member.setId(++sequence); //멤버의 id를 시스템이 지정
         store.put(member.getId(), member); //이후 store에 저장

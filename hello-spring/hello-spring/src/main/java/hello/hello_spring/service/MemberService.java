@@ -11,13 +11,14 @@ import java.util.Optional;
 
 //만들어진 도메인들을 이용해 구현되는 실제 서비스 로직
 
-@Service
+// @Service     // 컴포넌트 스캔 방식 -> 직접 등록 방식을 실습하기 위해 해당 에노테이션을 주석처리함
 public class MemberService {
     private final MemberRepository memberRepository;
 
-    //서비스 객체가 자신이 의존하는 리포지토리 객체의 구현체를 직접 생성하지 않고
-    //외부에서 전달받아 사용하는 설계 방식 = 의존성 주입
-    @Autowired
+    // 서비스 객체가 자신이 의존하는 리포지토리 객체의 구현체를 직접 생성하지 않고
+    // 외부에서 전달받아 사용하는 설계 방식 = 의존성 주입
+
+    // @Autowired
     public MemberService(MemberRepository memberRepository){
         this.memberRepository = memberRepository;
     }

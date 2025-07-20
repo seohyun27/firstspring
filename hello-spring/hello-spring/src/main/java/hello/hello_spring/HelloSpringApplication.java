@@ -10,6 +10,6 @@ public class HelloSpringApplication {
 	}
 }
 
-
+//실행 클래스
 //spring.io의 project -> springboot -> feature에 들어가서 원하는 기능들을 검색 가능
 
