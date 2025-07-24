@@ -14,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 // import static org.junit.jupiter.api.Assertions.*;에서
 // fail() 메소드를 인식하지 못하므로 필요한 부분을 명시적으로 import함
 
+// 단위 테스트
+// DB를 연결하지 않은 순수 자바 코드에 대한 테스트
+// 대부분의 경우에는 통합 테스트보다 단위 테스트를 하는 쪽이 더 좋다
+
 class MemberServiceTest {
     //테스트 코드는 빌드시 실제 코드에 포함되지 않는다
     //즉, 메소드의 이름을 한글로 작성하거나 해도 크게 문제가 되지 않는다

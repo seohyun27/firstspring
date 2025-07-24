@@ -31,6 +31,9 @@ public class MemberController {
         this.memberService = memberService;
     }
 
+    // GET 메소드는 주로 정보 조회에 사용
+    // POST 메소드는 주로 데이터를 생성하거나 변경하는 등 서버 상태를 변화시키는 요청에 사용됨
+
     @GetMapping("/members/new")
     public String createForm(){
         return "members/createMemberForm";
@@ -46,6 +49,9 @@ public class MemberController {
         return "redirect:/"; //회원가입이 끝났으니 홈 화면으로 복귀
     }
 
+    // 컨트롤러는 Model 객체의 addAttribuet 메소드를 사용하여 뷰 템플릿에 전달할 데이터를 담는다
+    // 뷰 리졸버는 템플릿을 찾고 Thymeleaf가 데이터를 렌더링한다
+    
     @GetMapping("/members")
     public String list(Model model){
         List<Member> members = memberService.findMembers();

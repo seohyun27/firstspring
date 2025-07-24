@@ -1,10 +1,15 @@
 package hello.hello_spring;
 
+import hello.hello_spring.repository.JdbcMemberRepository;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
 import hello.hello_spring.service.MemberService;
+import org.attoparser.trace.MarkupTraceEvent;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.sql.DataSource;
 
 // 서비스와 리포지토리의 @Service, @Repository, @Autowired 애노테이션이 없어야 함 -> 이건 컴포넌트 스캔 방식일 때만 필요
 // 컨트롤러의 경우는 컴포넌트 스캔을 이용하게 됨 = @Controller + @Autowired
@@ -14,6 +19,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class SpringConfig {
+
+    private DataSource dataSource;
+
+    @Autowired
+    public SpringConfig(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
     @Bean //빈 등록
     public MemberService memberService(){
@@ -25,7 +37,11 @@ public class SpringConfig {
         //MemberRepository : 인터페이스
         //MemoryMemberRepository : 구현 클래스 -> 여기서 생성 가능
 
-        return new MemoryMemberRepository();
-        //이 부분의 구현 클래스만 바꾸면 실제 DB를 연결하는 것이 빠르게 가능하다 -> 수동 연결의 장점
+        //return new MemoryMemberRepository();
+        //에플리케이션 조립 부분만 손대면(클래스의 객체화 코드만 바꾸면) DB를 바꾸는 것이 빠르게 가능하다 -> 수동 연결의 장점
+        //개방-폐쇄 형식 : 확장에서는 열려 있고 수정/변경에는 닫혀있다
+        //스프링의 의존성 주입(DI)를 사용하면 기존의 코드를 손대지 않고 설정만으로 구현 클래스를 변경할 수 있다
+
+        return new JdbcMemberRepository(dataSource);
     }
 }

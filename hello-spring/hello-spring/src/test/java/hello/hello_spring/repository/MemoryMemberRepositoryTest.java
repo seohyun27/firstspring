@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import hello.hello_spring.domain.Member;
 import static org.assertj.core.api.Assertions.*; //assertThat() 메소드
-
 import java.util.List;
 
 public class MemoryMemberRepositoryTest {
