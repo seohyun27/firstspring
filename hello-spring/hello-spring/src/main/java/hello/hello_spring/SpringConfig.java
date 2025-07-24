@@ -1,6 +1,7 @@
 package hello.hello_spring;
 
 import hello.hello_spring.repository.JdbcMemberRepository;
+import hello.hello_spring.repository.JdbcTemplateMemberRepository;
 import hello.hello_spring.repository.MemberRepository;
 import hello.hello_spring.repository.MemoryMemberRepository;
 import hello.hello_spring.service.MemberService;
@@ -42,6 +43,10 @@ public class SpringConfig {
         //개방-폐쇄 형식 : 확장에서는 열려 있고 수정/변경에는 닫혀있다
         //스프링의 의존성 주입(DI)를 사용하면 기존의 코드를 손대지 않고 설정만으로 구현 클래스를 변경할 수 있다
 
-        return new JdbcMemberRepository(dataSource);
+        //return new JdbcMemberRepository(dataSource);
+        //순수 Jdbc
+        //옛날 방식. 중복 코드가 많고 코드 자체가 복잡하다
+
+        return new JdbcTemplateMemberRepository(dataSource);
     }
 }

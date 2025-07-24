@@ -6,8 +6,13 @@ package hello.hello_spring.repository;
 //역으로 테스트 클래스를 먼저 작성한 이후에 이에 맞는 구현 클래스를 작성할 수도 있음
 //테스트 주도 개발(TTD)
 
+//만들고자 하는 결과가 커질수록 테스트 코드가 길고 복잡해진다
+//개발을 잘 하는 것 = 결과를 만드는 것만큼이나 테스트 코드를 제대로 작성하는 것이 중요하다!
+
+//ex. DB를 바꿨을 때 직접 테스트할 필요 없이 아래의 테스트 코드를 돌려보는 것만으로 코드가 제대로 작동하는지를 확인할 수 있다
+
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
+//import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import hello.hello_spring.domain.Member;
 import static org.assertj.core.api.Assertions.*; //assertThat() 메소드
