@@ -1,10 +1,8 @@
 package hello.hello_spring;
 
-import hello.hello_spring.repository.JdbcMemberRepository;
-import hello.hello_spring.repository.JdbcTemplateMemberRepository;
-import hello.hello_spring.repository.MemberRepository;
-import hello.hello_spring.repository.MemoryMemberRepository;
+import hello.hello_spring.repository.*;
 import hello.hello_spring.service.MemberService;
+import jakarta.persistence.EntityManager;
 import org.attoparser.trace.MarkupTraceEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -21,11 +19,22 @@ import javax.sql.DataSource;
 @Configuration
 public class SpringConfig {
 
+    /*
+    //Jdbc에서 필요
     private DataSource dataSource;
 
     @Autowired
     public SpringConfig(DataSource dataSource){
         this.dataSource = dataSource;
+    }
+     */
+
+    //Jpa에서 필요
+    private EntityManager em;
+
+    @Autowired
+    public SpringConfig(EntityManager em){
+        this.em = em;
     }
 
     @Bean //빈 등록
@@ -47,6 +56,13 @@ public class SpringConfig {
         //순수 Jdbc
         //옛날 방식. 중복 코드가 많고 코드 자체가 복잡하다
 
-        return new JdbcTemplateMemberRepository(dataSource);
+        //return new JdbcTemplateMemberRepository(dataSource);
+        //Jdbc 템플릿
+        //Jdbc에 비해 짧고 간결함. 쿼리문을 직접 작성해야 함
+
+        return new JpaMemberRepository(em);
+        //JPA
+        //DB를 하나의 객체처럼 사용.
+        //코드를 짜는 것에 집중 가능. insert와 delete에 쿼리문을 작성할 필요가 없음
     }
 }

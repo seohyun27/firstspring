@@ -5,10 +5,12 @@ import hello.hello_spring.repository.MemberRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+//순수 Java 코드와 DB 연동을 함께 검사함
 //통합 테스트
 
 @SpringBootTest
@@ -20,6 +22,7 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository;
 
     @Test
+    // @Commit : 실행 결과를 롤백 없이 DB에 반영함
     void join() {
         //given
         Member member = new Member();
