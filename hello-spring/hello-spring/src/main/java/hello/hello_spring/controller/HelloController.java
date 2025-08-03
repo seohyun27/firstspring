@@ -34,7 +34,7 @@ public class HelloController {
 
     //API 방식
     @GetMapping("hello-String")
-    @ResponseBody //탭플릿 대신 응답 바디 부분에 직접 넣겠다
+    @ResponseBody //템플릿 대신 응답 바디 부분에 직접 넣겠다
     public String helloString(@RequestParam("name") String name){
         return "hello" + name;
         //내가 입력한 name에 따라 "hello kim", "hello park" 등등이 그대로 리턴
