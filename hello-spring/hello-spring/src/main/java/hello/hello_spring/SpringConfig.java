@@ -1,5 +1,6 @@
 package hello.hello_spring;
 
+import hello.hello_spring.aop.TimeTraceAop;
 import hello.hello_spring.repository.*;
 import hello.hello_spring.service.MemberService;
 import jakarta.persistence.EntityManager;
@@ -29,6 +30,8 @@ public class SpringConfig {
     }
      */
 
+
+    /*
     //Jpa에서 필요
     private EntityManager em;
 
@@ -36,12 +39,32 @@ public class SpringConfig {
     public SpringConfig(EntityManager em){
         this.em = em;
     }
+     */
+
+    //스프링 데이터 JPA에서 필요
+    private final MemberRepository memberRepository;
+
+    @Autowired
+    public SpringConfig(MemberRepository memberRepository){
+        this.memberRepository = memberRepository;
+    }
 
     @Bean //빈 등록
     public MemberService memberService(){
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
+
+        // return new MemberService(memberRepository());
     }
 
+    //AOP를 등록 후 사용
+    @Bean
+    public TimeTraceAop timeTraceAop(){
+        return new TimeTraceAop();
+    }
+
+
+    /*
+    //데이터 스프링 JPA에서는 필요하지 않은 코드
     @Bean
     public MemberRepository memberRepository(){
         //MemberRepository : 인터페이스
@@ -55,6 +78,7 @@ public class SpringConfig {
         //return new JdbcMemberRepository(dataSource);
         //순수 Jdbc
         //옛날 방식. 중복 코드가 많고 코드 자체가 복잡하다
+        //리소스를 열고 닫는 과정을 수동으로 해줘야 함
 
         //return new JdbcTemplateMemberRepository(dataSource);
         //Jdbc 템플릿
@@ -64,5 +88,14 @@ public class SpringConfig {
         //JPA
         //DB를 하나의 객체처럼 사용.
         //코드를 짜는 것에 집중 가능. insert와 delete에 쿼리문을 작성할 필요가 없음
+        //제대로 사용하기 위해서는 스프링 부트 만큼의 공부가 필요
+        
+        
+        //스프링 데이터 JPA
+        //인터페이스 만으로 개발을 완료할 수 있다
+        //단순, 반복 개발 코드가 확연히 줄어듬 -> 핵심 비즈니스 로직에 집중할 수 있다
+        //JPA의 사용을 도와주는 도구이므로 JPA를 먼저 배워야 한다
     }
+     */
+
 }
