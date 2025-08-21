@@ -5,7 +5,7 @@ A backup of my Spring Boot practice project(3-1).
 
 ## Contents
 ### 🧾 Program Code
-All codes are in 'hello-spring/hello-spring/'
+All codes are in 'hello-spring/'
 #### 🛠️ build.gradle
 Project build configuration
 #### ⚙️ settings.gradle
