@@ -1,6 +1,6 @@
 # 🌱 First Spring (Study)
 > 인프런(Inflearn) 강의를 수강하며 진행한 **스프링 부트 입문 예제 프로젝트**입니다.
-> 웹 개발의 기초와 HTML 기반의 서버 사이드 렌더링 방식을 학습했으며 심화 내용은 <b>[JPA Shop](https://github.com/본인아이디/jpaShop)</b> 프로젝트에서 이어집니다.
+> 웹 개발의 기초와 HTML 기반의 서버 사이드 렌더링 방식을 학습했으며 심화 내용은 <b>[JPA Shop](https://github.com/seohyun27/jpashop.git)</b> 프로젝트에서 이어집니다.
 
 ## 🛠 Tech Stack
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-6DB33F?style=flat&logo=springboot&logoColor=white) 
